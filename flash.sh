@@ -66,12 +66,14 @@ then
     exit 1
 fi
 
-DIFF=`diff <(xxd $FIRMWARE) <(xxd $VERIFICATION)`
-if [ ! -z "$DIFF" ]
+diff "$FIRMWARE" "$VERIFICATION" &> /dev/null
+if [ $? -ne 0 ]
 then
     echo "ERROR: Verification FAILED, try to flash again."
     exit 1
 fi
+
+rm -f "$VERIFICATION"
 
 echo "Update finished sucessfully."
 echo '--------------------------------------------------------------------------'

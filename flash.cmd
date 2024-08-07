@@ -48,6 +48,8 @@ IF %ERRORLEVEL% NEQ 0 (
     EXIT /B
 )
 
+del "%VERIFICATION%"
+
 echo Update finished sucessfully.
 echo --------------------------------------------------------------------------
 echo Starting new firmware...
